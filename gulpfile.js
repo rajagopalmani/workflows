@@ -3,11 +3,12 @@ var gulp = require('gulp'),
     coffee = require('gulp-coffee'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat'),
-    compass = require('gulp-compass');
+    compass = require('gulp-compass'),
+    connect = require('gulp-connect');
 
 var coffeeSources = ['components/coffee/tagline.coffee'];
-var jsSources = ['components/scripts/pixgrid.js',
-                'components/scripts/rclick.js',
+var jsSources = ['components/scripts/rclick.js',
+                 'components/scripts/pixgrid.js',
                 'components/scripts/tagline.js',
                 'components/scripts/template.js'];
 var sassSources = ['components/sass/style.scss'];
@@ -27,6 +28,7 @@ gulp.task('js', function () {
         .pipe(concat('script.js'))
         .pipe(browserify())
         .pipe(gulp.dest('builds/development/js'))
+        .pipe(connect.reload())
 });
 
 gulp.task('css', function () {
@@ -38,12 +40,20 @@ gulp.task('css', function () {
         }))
         .on('error', gutil.log)
         .pipe(gulp.dest('builds/development/css'))
+        .pipe(connect.reload())
 });
-
-gulp.task('default', ['coffee', 'js', 'css', 'watch']);
 
 gulp.task('watch', function () {
     gulp.watch(coffeeSources, ['coffee']);
     gulp.watch(jsSources, ['js']);
     gulp.watch('components/sass/*.scss', ['css']);
 });
+
+gulp.task('connect', function () {
+    connect.server({
+        app: 'builds/development/',
+        livereload: true
+    })
+});
+
+gulp.task('default', ['coffee', 'css', 'js', 'connect', 'watch']);
