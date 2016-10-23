@@ -40,4 +40,10 @@ gulp.task('css', function () {
         .pipe(gulp.dest('builds/development/css'))
 });
 
-gulp.task('default', ['coffee', 'js', 'css']);
+gulp.task('default', ['coffee', 'js', 'css', 'watch']);
+
+gulp.task('watch', function () {
+    gulp.watch(coffeeSources, ['coffee']);
+    gulp.watch(jsSources, ['js']);
+    gulp.watch('components/sass/*.scss', ['css']);
+});
