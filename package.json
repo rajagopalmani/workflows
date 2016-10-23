@@ -1,20 +1,23 @@
 {
-    "name": "workflows",
-    "version": "1.0.0",
-    "description": "A project to showcase workflows",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rajagopalmani/workflows.git"
-    },
-    "author": "Raja Gopal",
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-coffee": "^2.3.2",
-        "gulp-concat": "^2.6.0",
-        "gulp-util": "^3.0.7"
-    }
+  "name": "workflows",
+  "version": "1.0.0",
+  "description": "A project to showcase workflows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajagopalmani/workflows.git"
+  },
+  "author": "Raja Gopal",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-coffee": "^2.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-util": "^3.0.7",
+    "jquery": "^3.1.1",
+    "mustache": "^2.2.1"
+  }
 }
